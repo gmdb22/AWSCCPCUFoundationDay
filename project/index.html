@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Cloud Club - PCU Cavite | Reika's Domain Egg Hunt</title>
+    <meta name="description" content="A cybersecurity CTF game teaching domain and DNS concepts through interactive challenges">
+    <meta name="keywords" content="CTF, cybersecurity, DNS, domain, AWS Cloud Club, educational game">
+    <meta name="author" content="AWS Cloud Club - PCU Cavite">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Reika's Domain Egg Hunt - AWS Cloud Club PCU Cavite">
+    <meta property="og:description" content="Learn cybersecurity and DNS concepts through interactive CTF challenges">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/og-image.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reika's Domain Egg Hunt - AWS Cloud Club PCU Cavite">
+    <meta name="twitter:description" content="Learn cybersecurity and DNS concepts through interactive CTF challenges">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#1f2937">
+    <meta name="msapplication-TileColor" content="#1f2937">
+    
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Minimal loading styles to prevent flash */
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #111827, #000000);
+            color: #ffffff;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+
+            <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script> 
+    
+        /* Loading spinner */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #111827, #000000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #374151;
+            border-top: 3px solid #10b981;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide loading when React loads */
+        #root:not(:empty) ~ .loading-container {
+            display: none;
+        }
+        
+        /* Also hide when content is detected */
+        .loading-container {
+            transition: opacity 0.3s ease;
+        }
+        
+        body.loaded .loading-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- React App Mount Point -->
+    <div id="root"></div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-container">
+        <div style="text-align: center;">
+            <div style="font-size: 48px; margin-bottom: 20px;">🥚</div>
+            <h1 style="margin: 0 0 10px 0; font-size: 24px; font-weight: 500;">AWS CLOUD CLUB - PCU CAVITE</h1>
+            <h2 style="margin: 0 0 30px 0; font-size: 20px; font-weight: 400; background: linear-gradient(45deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Reika's Domain Egg Hunt</h2>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading CTF Environment...</div>
+        </div>
+    </div>
+    
+    <!-- Error Fallback -->
+    <noscript>
+        <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #ef4444;">
+            <h2>JavaScript Required</h2>
+            <p>This CTF game requires JavaScript to run. Please enable JavaScript in your browser.</p>
+        </div>
+    </noscript>
+    
+    <!-- Loading State Management -->
+    <script>
+        // Hide loading screen when React app loads
+        const observer = new MutationObserver(() => {
+            const root = document.getElementById('root');
+            if (root && root.children.length > 0) {
+                document.body.classList.add('loaded');
+                observer.disconnect();
+            }
+        });
+        
+        observer.observe(document.getElementById('root'), {
+            childList: true,
+            subtree: true
+        });
+        
+        // Fallback timeout
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+        }, 5000);
+    </script>
+    
+    <!-- Module Script for React App -->
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
