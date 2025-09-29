@@ -22,7 +22,7 @@ jobs:
       run: chmod +x node_modules/.bin/vite
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Build project
       run: npm run build
@@ -31,4 +31,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GH_TOKEN }}
-        publish_dir: ./dist
+        folder: dist
