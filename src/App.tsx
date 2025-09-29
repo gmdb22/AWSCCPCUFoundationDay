@@ -3,9 +3,17 @@ import { CTFHeader } from './components/CTFHeader';
 import { Terminal } from './components/Terminal';
 import { GameOverModal } from './components/GameOverModal';
 import { Button } from './components/ui/button';
-
+import { ImageOverlay } from './components/ImageOverlay';
 const TOTAL_FLAGS = 5;
 const GAME_DURATION = 600; // 10 minutes in seconds
+
+interface OverlayImage {
+  url: string;
+  title: string;
+}
+
+const OVERLAY_IMAGES: OverlayImage[] = [
+];
 
 interface Challenge {
   id: number;
@@ -19,47 +27,48 @@ interface Challenge {
 const CHALLENGES: Challenge[] = [
   {
     id: 1,
-    title: "DNS Basics",
-    description: "What DNS record type is used to point a domain to an IP address?",
-    flag: "CTF{A_RECORD}",
-    hints: ["Think about the most basic DNS record", "It maps hostnames to IPv4 addresses"],
+    title: "Egg #1",
+    description: "The console commands are essential for navigating and solving CTF and cybersecurity challenges.",
+    flag: "CONSOLEEGG",
+    hints: ["Pay attention to the commands listed when you type in help", "Have you tried the console commands yet?"],
     completed: false
   },
   {
     id: 2,
-    title: "Subdomain Discovery",
-    description: "You found a hidden subdomain: 'secret.example.com'. What's the flag format?",
-    flag: "CTF{SUBDOMAIN_FOUND}",
-    hints: ["Look for patterns in subdomain naming", "Sometimes secrets are hidden in plain sight"],
+    title: "Egg #2",
+    description: "Developers often use the tools available to them in the browser's available development tools.",
+    flag: "PAGE_SOURCE",
+    hints: ["This is a common browser feature that lets you view the basic source code", "Right-click on the webpage and look for an option"],
     completed: false
   },
   {
     id: 3,
-    title: "Domain Registration",
-    description: "What command-line tool can you use to query domain registration information?",
-    flag: "CTF{WHOIS}",
-    hints: ["It's a protocol and tool for querying databases", "Who is responsible for this domain?"],
+    title: "Egg #3",
+    description: "A subdirectory is a basic necessity for identifying a website's content.",
+    flag: "AWSCLOUDCLUBPCUCAVITE",
+    hints: ["Have you checked our Facebook page?", "Look for a subdirectory in a specific URL", "The answer needs to be in upper case"],
     completed: false
   },
   {
     id: 4,
-    title: "DNS Enumeration",
-    description: "What DNS record type is used for mail servers?",
-    flag: "CTF{MX_RECORD}",
-    hints: ["Mail eXchange", "It specifies mail servers for a domain"],
+    title: "Egg #4",
+    description: "Titles are used to tag and identify elements in a website.",
+    flag: "I_LOVE_EGG_HUNTS",
+    hints: ["Have you hovered over the elements within the website?", "Egg?"],
     completed: false
   },
   {
     id: 5,
-    title: "TLD Knowledge",
-    description: "What does TLD stand for in domain terminology?",
-    flag: "CTF{TOP_LEVEL_DOMAIN}",
-    hints: ["It comes after the last dot", "Examples include .com, .org, .net"],
+    title: "Egg #5",
+    description: "Paths and subdirectories are essential for navigating a website's structure.",
+    flag: "RAWR_XD",
+    hints: ["Have you taken note of the strange set of numbers & letters from Egg #2?", "youtube.com/watch?"],
     completed: false
   }
 ];
 
 export default function App() {
+  const [currentOverlay, setCurrentOverlay] = useState<OverlayImage | null>(null);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [challenges, setChallenges] = useState<Challenge[]>(CHALLENGES);
   const [gameStarted, setGameStarted] = useState(false);
@@ -111,7 +120,7 @@ export default function App() {
         "  hint <n>      - Get a hint for challenge n",
         "  clear         - Clear terminal",
         "",
-        "Good luck, hacker! 🔥",
+        "Good luck, awrca! 🌊",
         ""
       ]);
     }
@@ -136,9 +145,10 @@ export default function App() {
           "  help          - Show this help message",
           "  challenges    - List all challenges",
           "  challenge <n> - View challenge details (1-5)",
-          "  submit <flag> - Submit a flag in format CTF{FLAG_TEXT}",
+          "  submit <egg>  - Submit a flag in format CTF{EGG_TEXT}",
           "  hint <n>      - Get a hint for challenge n",
           "  clear         - Clear terminal",
+          "  CONSOLEEGG    - easter egg to submit",
           ""
         ]);
         break;
@@ -177,12 +187,14 @@ export default function App() {
 
       case 'submit':
         if (!arg) {
-          addOutput("❌ Please provide a flag to submit.");
+          addOutput("❌ Please provide an egg to submit.");
           break;
         }
         
+        
         const flag = arg.toUpperCase();
         const matchingChallenge = challenges.find(c => c.flag === flag && !c.completed);
+        
         
         if (matchingChallenge) {
           setChallenges(prev => prev.map(c => 
@@ -190,16 +202,16 @@ export default function App() {
           ));
           addOutput([
             "",
-            "🎉 CORRECT! Flag accepted! 🎉",
+            "🎉 CORRECT! Egg accepted! 🎉",
             `✅ Challenge ${matchingChallenge.id} solved: ${matchingChallenge.title}`,
-            `🏆 Progress: ${flagsFound + 1}/${TOTAL_FLAGS} flags found`,
+            `🏆 Progress: ${flagsFound + 1}/${TOTAL_FLAGS} eggs found`,
             ""
           ]);
         } else {
           addOutput([
             "",
-            "❌ Incorrect flag or already submitted.",
-            "💡 Tip: Flags are in format CTF{FLAG_TEXT}",
+            "❌ Incorrect egg or already submitted.",
+            "💡 Tip: Eggs are in format submit {EGG_TEXT}",
             ""
           ]);
         }
@@ -272,48 +284,75 @@ export default function App() {
 
   if (!gameStarted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center p-4">
-        <div className="bg-gray-800 border border-green-500/30 rounded-lg p-8 max-w-2xl w-full text-center shadow-2xl">
-          <h1 className="text-2xl mb-2 text-white">AWS CLOUD CLUB - PCU CAVITE</h1>
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="text-center">
+          <img src="./public/images/LogoTitle/borderUp.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="./public/images/LogoTitle/awscc-pcu.png" width="300" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="./public/images/LogoTitle/title.pnh.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="./public/images/LogoTitle/borderDown.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <h1 className="text-2xl mb-2 text-white"></h1>
           <h2 className="text-4xl mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-            🥚 Reika's Domain Egg Hunt 🥚
           </h2>
           
           <div className="mb-6 space-y-4 text-left text-gray-300">
-            <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
-              <h3 className="text-lg mb-2 text-blue-400">🎯 Mission:</h3>
-              <p>Solve {TOTAL_FLAGS} domain-related cybersecurity challenges to capture all flags!</p>
+            <div className=" p-4 rounded-lg">
+             <img src="./public/images/mission.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
+              <h3 className="text-lg mb-2 text-blue-400"></h3>
             </div>
             
-            <div className="bg-purple-900/30 border border-purple-500/30 p-4 rounded-lg">
-              <h3 className="text-lg mb-2 text-purple-400">⏰ Time Limit:</h3>
-              <p>You have 10 minutes to complete all challenges</p>
+            <div className="p-4 rounded-lg">
+            <img src="./public/images/timelimit.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
             
-            <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
-              <h3 className="text-lg mb-2 text-green-400">💡 How to Play:</h3>
-              <ul className="text-sm space-y-1">
-                <li>• Use terminal commands to navigate challenges</li>
-                <li>• Type 'help' for available commands</li>
-                <li>• Submit flags in format: CTF{"FLAG"}</li>
-                <li>• Get hints if you're stuck</li>
-              </ul>
+            <div className="p-4 rounded-lg">
+              <img src="./public/images/howtoplay.png" width="500" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
           </div>
           
-          <Button
-            onClick={startGame}
-            className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-8 py-3 text-lg transition-all duration-200 transform hover:scale-105"
-          >
-            🚀 Start CTF
-          </Button>
+          <div className='space-y-4'>
+            <div className='flex gap-4 justify-center'>
+              {OVERLAY_IMAGES.map((image, index) => (
+                <Button
+                  key={index}
+                  onClick={() => setCurrentOverlay(image)}
+                  className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2'
+                >
+                  📚 View Guide {index + 1}
+                </Button>
+              ))}
+            </div>
+            <Button type="image"
+              onClick={startGame}
+              className="transition-transform duration-300 ease-in-out, opacity 0.3s ease-in-out; hover:scale-105"
+              >
+              <img src="./public/images/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
+                const img = document.querySelector('img[alt="Start Game"]');
+                if (img) {
+                  img.src = './public/images/buttonActive.png';
+                }
+              }} onMouseOut={() => {
+                const img = document.querySelector('img[alt="Start Game"]');
+                if (img) {
+                  img.src = './public/images/buttonStatic.png';
+                }
+              }} />
+
+            </Button>
+          </div>
+          {currentOverlay && (
+            <ImageOverlay
+              imageUrl={currentOverlay.url}
+              title={currentOverlay.title}
+              onClose={() => setCurrentOverlay(null)}
+            />
+          )}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black p-4">
+    <div className="min-h-screen to-black p-4">
       <div className="max-w-6xl mx-auto">
         <CTFHeader 
           timeLeft={timeLeft}

@@ -17,7 +17,7 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-black rounded-lg p-8 max-w-md w-full mx-4 text-center shadow-2xl">
+      <div className="bg-gradient-to-r from-black to-red-900 rounded-lg p-8 max-w-md w-full mx-4 text-center shadow-2xl">
         <div className="text-6xl mb-4">
           {isWin ? '🎉' : '⏰'}
         </div>
@@ -56,7 +56,7 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
         
         {isWin && (
           <div className="mt-4 text-sm text-gray-600">
-            <p>🎯 Challenge: Can you find them faster next time?</p>
+            <p></p>
           </div>
         )}
       </div>

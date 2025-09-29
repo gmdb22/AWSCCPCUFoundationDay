@@ -61,7 +61,7 @@ export function Terminal({ onCommand, output, isGameActive }: TerminalProps) {
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-green-400 text-xs">Reika's Domain CTF Terminal v1.0</div>
+        <div className="text-green-400 text-xs">Reika's Domain CTF Terminal v0.67</div>
       </div>
       
       <div 

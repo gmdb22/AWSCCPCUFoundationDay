@@ -12,9 +12,10 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #000;
-  color: #fff;
+  background-image: url('/public/images/BackGround.png');
+  background-size: cover;
 }
+
 
 /* Terminal styles */
 .terminal-output {
@@ -41,17 +42,33 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
-.bg {
-  background-image-repeat: no-repeat;
-  background-image: url('./Images/pocky.jpg');
-}
 ::-webkit-scrollbar-track {
   background: rgba(0, 255, 0, 0.1);
 }
-
+.background-with-image {
+  background-image: url('.public/images/Pocky.jpg');
+}
+.Header {
+  background-image: url('.public/images/Pocky.jpg');
+}
+.buttonStatic {
+  background-image: url('.public/images/buttonStatic.png');
+}
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 255, 0, 0.3);
   border-radius: 4px;
+}
+.mybtn {
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 17px;
+    border: none;
+    box-shadow: rgb(0, 0, 0) 0px 3px 20px;
+    transition: 0.3s linear;
 }
 
 ::-webkit-scrollbar-thumb:hover {
