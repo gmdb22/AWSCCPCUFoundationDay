@@ -74,11 +74,10 @@ export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
-  const [currentChallenge, setCurrentChallenge] = useState<number | null>(null);
+  const [_currentChallenge, setCurrentChallenge] = useState<number | null>(null);
 
   const flagsFound = challenges.filter(c => c.completed).length;
   const isWin = flagsFound === TOTAL_FLAGS;
-  const isTimeUp = timeLeft <= 0;
 
   // Timer effect
   useEffect(() => {
@@ -321,19 +320,19 @@ export default function App() {
                 </Button>
               ))}
             </div>
-            <Button type="image"
+            <Button
               onClick={startGame}
               className="transition-transform duration-300 ease-in-out, opacity 0.3s ease-in-out; hover:scale-110"
               >
               <img src="/images/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  img.src = '/images/buttonActive.png';
+                  (img as HTMLImageElement).src = '/images/buttonActive.png';
                 }
               }} onMouseOut={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  img.src = '/images/buttonStatic.png';
+                  (img as HTMLImageElement).src = '/images/buttonStatic.png';
                 }
               }} />
 
