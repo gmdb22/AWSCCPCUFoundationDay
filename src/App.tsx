@@ -109,13 +109,13 @@ export default function App() {
       setTerminalOutput([
         "🥚 Welcome to Reika's Domain Egg Hunt! 🥚",
         "",
-        "You have 10 minutes to capture 5 flags by solving domain-related challenges.",
+        "You have 10 minutes to find 5 eggs by solving domain-related challenges.",
         "",
         "Available commands:",
         "  help          - Show this help message",
         "  challenges    - List all challenges",
         "  challenge <n> - View challenge details",
-        "  submit <egg> - Submit a egg",
+        "  submit <egg> - Submit an egg",
         "  hint <n>      - Get a hint for challenge n",
         "  clear         - Clear terminal",
         "",
@@ -368,7 +368,21 @@ export default function App() {
             />
           </div>
           
+
+          
           <div className="space-y-4">
+
+                        <div className="bg-gray-800 border border-green-500/30 rounded-lg p-4">
+              <h3 className="text-green-400 mb-3">💡 Quick Tips</h3>
+              <ul className="text-sm text-gray-300 space-y-1"></ul>
+              <ul className="text-base md:text-xl text-gray-300 space-y-6">
+                <li>• Type 'challenges' to see all tasks</li>
+                <li>• Use 'hint N' for challenge hints</li>
+                <li>• Eggs need to be upper case</li>
+                <li>• Don't be shy to use the hint button over and over again</li>
+              </ul>
+            </div>
+
             <div className="bg-gray-800 border border-blue-500/30 rounded-lg p-4">
               <h3 className="text-blue-400 mb-3">📊 Progress</h3>
               <div className="space-y-2">
@@ -380,24 +394,6 @@ export default function App() {
                     </span>
                   </div>
                 ))}
-              </div>
-            </div>
-            
-            <div className="bg-gray-800 border border-green-500/30 rounded-lg p-4">
-              <h3 className="text-green-400 mb-3">💡 Quick Tips</h3>
-              <ul className="text-sm text-gray-300 space-y-1">
-                <li>• Type 'challenges' to see all tasks</li>
-                <li>• Use 'hint N' for challenge hints</li>
-                <li>• Eggs need to be upper case</li>
-                <li>• Don't be shy to use the hint button over and over again</li>
-              </ul>
-            </div>
-            
-            <div className="bg-gray-800 border border-yellow-500/30 rounded-lg p-4">
-              <h3 className="text-yellow-400 mb-3">🏆 Score</h3>
-              <div className="text-center">
-                <div className="text-2xl text-white">{flagsFound * 100}</div>
-                <div className="text-sm text-gray-400">points</div>
               </div>
             </div>
           </div>
