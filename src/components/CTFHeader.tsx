@@ -15,7 +15,7 @@ export function CTFHeader({ timeLeft, flagsFound, totalFlags }: CTFHeaderProps) 
 
   return (
     <div className="bg-gradient-to-r from-black to-red-900 text-white p-6 rounded-lg shadow-lg mb-6">
-      <img src="/images/banner.png" alt="Start Game" width="1500" title="Hover over the egg count, maybe? >:3c" height="200"/>
+      <img src="/banner.png" alt="Start Game" width="1500" title="Hover over the egg count, maybe? >:3c" height="200"/>
       
       <div className="text-center mb-4">
         <h1 className="text-2xl mb-2"></h1>
@@ -25,11 +25,11 @@ export function CTFHeader({ timeLeft, flagsFound, totalFlags }: CTFHeaderProps) 
       
       <div className="flex justify-between items-center mb-4">
         <div className="bg-black/20 px-4 py-2 rounded-full">
-          <span className="text-xl"> <img src="/images/Stickers/reiklock.png" width="50px" height="50px" alt="Timer" title="Time Left" className="inline-block mr-1" /> {formatTime(timeLeft)}</span>
+          <span className="text-xl"> <img src="/reiklock.png" width="50px" height="50px" alt="Timer" title="Time Left" className="inline-block mr-1" /> {formatTime(timeLeft)}</span>
         </div>
         <div className="bg-black/20 px-4 py-2 rounded-full">
           <span className="text-xl"> 
-          <img src="/images/Stickers/reikaBrown_egg.png" width="50px" height="50px" alt="Egg" title="I_LOVE_EGG_HUNTS" className="inline-block mr-1" /> {flagsFound}/{totalFlags} </span>
+          <img src="/reikaBrown_egg.png" width="50px" height="50px" alt="Egg" title="I_LOVE_EGG_HUNTS" className="inline-block mr-1" /> {flagsFound}/{totalFlags} </span>
         </div>
       </div>
       
