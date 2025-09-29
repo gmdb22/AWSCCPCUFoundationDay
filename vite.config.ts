@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/AWSCCPCUFoundationDay/',
-  root: './',
   build: {
     rollupOptions: {
       input: './index.html'
@@ -16,9 +15,6 @@ export default defineConfig({
     strictPort: true,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom'],
-    entries: [
-      './src/main.tsx'
-    ]
+    entries: ['./src/main.tsx']
   }
 })

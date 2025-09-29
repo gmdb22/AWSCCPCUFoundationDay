@@ -41,7 +41,7 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
           <div className="flex justify-center space-x-2 mb-4">
             {Array.from({ length: totalEggs }, (_, i) => (
               <span key={i} className="text-3xl">
-                {i < eggsCollected ? <img src='/reikaGold_egg.png' alt={`Egg ${i + 1}`} /> : '⭕'}
+                {i < eggsCollected ? <img src='/AWSCCPCUFoundationDay/reikaGold_egg.png' alt={`Egg ${i + 1}`} /> : '⭕'}
               </span>
             ))}
           </div>

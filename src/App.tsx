@@ -285,26 +285,26 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center">
-          <img src="/borderUp.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="/awscc-pcu.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="/title.pnh.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="/borderDown.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/AWSCCPCUFoundationDay/borderUp.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/AWSCCPCUFoundationDay/awscc-pcu.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/AWSCCPCUFoundationDay/title.pnh.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/AWSCCPCUFoundationDay/borderDown.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
           <h1 className="text-2xl mb-2 text-white"></h1>
           <h2 className="text-4xl mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
           </h2>
           
           <div className="mb-6 space-y-4 text-left text-gray-300">
             <div className=" p-4 rounded-lg">
-             <img src="/mission.png" width="500" height="100" style={{ display: "block", margin: "0 auto" }}/>
+             <img src="/AWSCCPCUFoundationDay/mission.png" width="500" height="100" style={{ display: "block", margin: "0 auto" }}/>
               <h3 className="text-lg mb-2 text-blue-400"></h3>
             </div>
             
             <div className="p-4 rounded-lg">
-            <img src="/timelimit.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
+            <img src="/AWSCCPCUFoundationDay/timelimit.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
             
             <div className="p-4 rounded-lg">
-              <img src="/howtoplay.png" width="600" height="100" style={{ display: "block", margin: "0 auto" }}/>
+              <img src="/AWSCCPCUFoundationDay/howtoplay.png" width="600" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
           </div>
           
@@ -324,15 +324,15 @@ export default function App() {
               onClick={startGame}
               className="transition-transform duration-300 ease-in-out, opacity 0.3s ease-in-out; hover:scale-110"
               >
-              <img src="/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
+              <img src="/AWSCCPCUFoundationDay/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  (img as HTMLImageElement).src = '/buttonActive.png';
+                  (img as HTMLImageElement).src = '/AWSCCPCUFoundationDay/buttonActive.png';
                 }
               }} onMouseOut={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  (img as HTMLImageElement).src = '/buttonStatic.png';
+                  (img as HTMLImageElement).src = '/AWSCCPCUFoundationDay/buttonStatic.png';
                 }
               }} />
 
