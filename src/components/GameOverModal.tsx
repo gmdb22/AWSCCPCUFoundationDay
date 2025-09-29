@@ -22,12 +22,12 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
           {isWin ? '🎉' : '⏰'}
         </div>
         
-        <h2 className="text-3xl mb-4">
+        <h2 className="text-white text-3xl mb-4">
           {isWin ? 'Congratulations!' : 'Time\'s Up!'}
         </h2>
         
         <div className="mb-6 space-y-2">
-          <p className="text-xl">
+          <p className="text-xl text-white">
             You collected <span className="text-orange-500">{eggsCollected}</span> out of <span className="text-orange-500">{totalEggs}</span> eggs!
           </p>
           {isWin && (
@@ -41,7 +41,7 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
           <div className="flex justify-center space-x-2 mb-4">
             {Array.from({ length: totalEggs }, (_, i) => (
               <span key={i} className="text-3xl">
-                {i < eggsCollected ? '🥚' : '⭕'}
+                {i < eggsCollected ? <img src='/images/Stickers/reikaGold_egg.png' alt={`Egg ${i + 1}`} /> : '⭕'}
               </span>
             ))}
           </div>

@@ -12,7 +12,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url('/public/images/BackGround.png');
+  background-image: url('/images/BackGround.png');
   background-size: cover;
 }
 
@@ -46,13 +46,13 @@ body {
   background: rgba(0, 255, 0, 0.1);
 }
 .background-with-image {
-  background-image: url('.public/images/Pocky.jpg');
+  background-image: url('/images/Pocky.jpg');
 }
 .Header {
-  background-image: url('.public/images/Pocky.jpg');
+  background-image: url('/images/Pocky.jpg');
 }
 .buttonStatic {
-  background-image: url('.public/images/buttonStatic.png');
+  background-image: url('/images/buttonStatic.png');
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 255, 0, 0.3);

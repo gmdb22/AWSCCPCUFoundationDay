@@ -46,7 +46,7 @@ const CHALLENGES: Challenge[] = [
     title: "Egg #3",
     description: "A subdirectory is a basic necessity for identifying a website's content.",
     flag: "AWSCLOUDCLUBPCUCAVITE",
-    hints: ["Have you checked our Facebook page?", "Look for a subdirectory in a specific URL", "The answer needs to be in upper case"],
+    hints: ["Have you checked our Facebook page?", "Look for a subdirectory in a specific URL", "The answer needs to be in upper case", "Spam the hint button if you need to"],
     completed: false
   },
   {
@@ -116,7 +116,7 @@ export default function App() {
         "  help          - Show this help message",
         "  challenges    - List all challenges",
         "  challenge <n> - View challenge details",
-        "  submit <flag> - Submit a flag",
+        "  submit <egg> - Submit a egg",
         "  hint <n>      - Get a hint for challenge n",
         "  clear         - Clear terminal",
         "",
@@ -145,7 +145,7 @@ export default function App() {
           "  help          - Show this help message",
           "  challenges    - List all challenges",
           "  challenge <n> - View challenge details (1-5)",
-          "  submit <egg>  - Submit a flag in format CTF{EGG_TEXT}",
+          "  submit <egg>  - Submit an egg in format {EGG_TEXT}",
           "  hint <n>      - Get a hint for challenge n",
           "  clear         - Clear terminal",
           "  CONSOLEEGG    - easter egg to submit",
@@ -286,26 +286,26 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center">
-          <img src="./public/images/LogoTitle/borderUp.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="./public/images/LogoTitle/awscc-pcu.png" width="300" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="./public/images/LogoTitle/title.pnh.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
-          <img src="./public/images/LogoTitle/borderDown.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/images/LogoTitle/borderUp.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/images/LogoTitle/awscc-pcu.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/images/LogoTitle/title.pnh.png" width="400" height="20" style={{ display: "block", margin: "0 auto" }}/>
+          <img src="/images/LogoTitle/borderDown.png" width="500" height="20" style={{ display: "block", margin: "0 auto" }}/>
           <h1 className="text-2xl mb-2 text-white"></h1>
           <h2 className="text-4xl mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
           </h2>
           
           <div className="mb-6 space-y-4 text-left text-gray-300">
             <div className=" p-4 rounded-lg">
-             <img src="./public/images/mission.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
+             <img src="/images/mission.png" width="500" height="100" style={{ display: "block", margin: "0 auto" }}/>
               <h3 className="text-lg mb-2 text-blue-400"></h3>
             </div>
             
             <div className="p-4 rounded-lg">
-            <img src="./public/images/timelimit.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
+            <img src="/images/timelimit.png" width="400" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
             
             <div className="p-4 rounded-lg">
-              <img src="./public/images/howtoplay.png" width="500" height="100" style={{ display: "block", margin: "0 auto" }}/>
+              <img src="/images/howtoplay.png" width="600" height="100" style={{ display: "block", margin: "0 auto" }}/>
             </div>
           </div>
           
@@ -323,17 +323,17 @@ export default function App() {
             </div>
             <Button type="image"
               onClick={startGame}
-              className="transition-transform duration-300 ease-in-out, opacity 0.3s ease-in-out; hover:scale-105"
+              className="transition-transform duration-300 ease-in-out, opacity 0.3s ease-in-out; hover:scale-110"
               >
-              <img src="./public/images/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
+              <img src="/images/buttonStatic.png" alt="Start Game" width="300" height="100" onMouseOver={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  img.src = './public/images/buttonActive.png';
+                  img.src = '/images/buttonActive.png';
                 }
               }} onMouseOut={() => {
                 const img = document.querySelector('img[alt="Start Game"]');
                 if (img) {
-                  img.src = './public/images/buttonStatic.png';
+                  img.src = '/images/buttonStatic.png';
                 }
               }} />
 
@@ -389,8 +389,8 @@ export default function App() {
               <ul className="text-sm text-gray-300 space-y-1">
                 <li>• Type 'challenges' to see all tasks</li>
                 <li>• Use 'hint N' for challenge hints</li>
-                <li>• Flags are case sensitive</li>
-                <li>• Think about DNS fundamentals</li>
+                <li>• Eggs need to be upper case</li>
+                <li>• Don't be shy to use the hint button over and over again</li>
               </ul>
             </div>
             
