@@ -104,26 +104,26 @@ export default function App() {
   }, [flagsFound, gameStarted]);
 
   // Initialize terminal
-  useEffect(() => {
-    if (gameStarted && terminalOutput.length === 0) {
-      setTerminalOutput([
-        "🥚 Welcome to Reika's Domain Egg Hunt! 🥚",
-        "",
-        "You have 10 minutes to find 5 eggs by solving domain-related challenges.",
-        "",
-        "Available commands:",
-        "  help          - Show this help message",
-        "  challenges    - List all challenges",
-        "  challenge <n> - View challenge details",
-        "  submit <egg> - Submit an egg",
-        "  hint <n>      - Get a hint for challenge n",
-        "  clear         - Clear terminal",
-        "",
-        "Good luck, awrca! 🌊",
-        ""
-      ]);
-    }
-  }, [gameStarted, terminalOutput.length]);
+useEffect(() => {
+  if (gameStarted && terminalOutput.length === 0) {
+    setTerminalOutput([
+      '<span style="color: #4ade80 !important">🥚 Welcome to Reika\'s Domain Egg Hunt! 🥚</span>',
+      "",
+      '<span style="color: #4ade80 !important">You have 10 minutes to find 5 eggs by solving domain-related challenges.</span>',
+      "",
+      '<span style="color: #4ade80 !important">Available commands:</span>',
+      '<span style="color: #4ade80 !important">  help</span>          - <span style="color: #9ca3af !important">Show this help message</span>',
+      '<span style="color: #4ade80 !important">  challenges</span>    - <span style="color: #9ca3af !important">List all challenges</span>',
+      '<span style="color: #4ade80 !important">  challenge &lt;n&gt;</span> - <span style="color: #9ca3af !important">View challenge details</span>',
+      '<span style="color: #4ade80 !important">  submit &lt;egg&gt;</span> - <span style="color: #9ca3af !important">Submit an egg</span>',
+      '<span style="color: #4ade80 !important">  hint &lt;n&gt;</span>      - <span style="color: #9ca3af !important">Get a hint for challenge n</span>',
+      '<span style="color: #4ade80 !important">  clear</span>         - <span style="color: #9ca3af !important">Clear terminal</span>',
+      "",
+      '<span style="color: #4ade80 !important">Good luck, awrca! 🌊</span>',
+      ""
+    ]);
+  }
+}, [gameStarted, terminalOutput.length]);
 
   const addOutput = useCallback((lines: string | string[]) => {
     const newLines = Array.isArray(lines) ? lines : [lines];
@@ -131,146 +131,144 @@ export default function App() {
   }, []);
 
   const handleCommand = useCallback((command: string) => {
-    const [cmd, ...args] = command.toLowerCase().split(' ');
-    const arg = args.join(' ');
+  const [cmd, ...args] = command.toLowerCase().split(' ');
+  const arg = args.join(' ');
 
-    addOutput(`reika@ctf:~$ ${command}`);
+  addOutput(`reika@ctf:~$ ${command}`);
 
-    switch (cmd) {
-      case 'help':
+  switch (cmd) {
+    case 'help':
+      addOutput([
+        '',
+        '<span style="color: #4ade80">  📋 AVAILABLE COMMANDS:</span>',
+        '<span style="color: #fde047">  help</span>       - <span style="color: #9ca3af">Show this help message</span>',
+        '<span style="color: #fde047">  challenges</span> - <span style="color: #9ca3af">List all challenges</span>',
+        '<span style="color: #fde047">  challenge N</span> - <span style="color: #9ca3af">View challenge details</span>',
+        '<span style="color: #fde047">  submit EGG</span>  - <span style="color: #9ca3af">Submit an egg</span>',
+        '<span style="color: #fde047">  hint N</span>      - <span style="color: #9ca3af">Get a hint</span>',
+        '<span style="color: #fde047">  clear</span>      - <span style="color: #9ca3af">Clear terminal</span>',
+        '<span style="color: #fde047">  CONSOLEEGG</span>      - <span style="color: #9ca3af">Egg #1 >:3c </span>',
+        ''
+      ]);
+      break;
+
+    case 'challenges':
+      addOutput([
+        "",
+        "🎯 CTF Challenges:",
+        ""
+      ]);
+      challenges.forEach(challenge => {
+        const status = challenge.completed ? "✅ SOLVED" : "🔓 UNSOLVED";
+        addOutput(`${challenge.id}. ${challenge.title} - ${status}`);
+      });
+      addOutput("");
+      break;
+
+    case 'challenge':
+      const challengeNum = parseInt(arg);
+      if (challengeNum >= 1 && challengeNum <= 5) {
+        const challenge = challenges[challengeNum - 1];
+        setCurrentChallenge(challengeNum);
         addOutput([
           "",
-          "Available commands:",
-          "  help          - Show this help message",
-          "  challenges    - List all challenges",
-          "  challenge <n> - View challenge details (1-5)",
-          "  submit <egg>  - Submit an egg in format {EGG_TEXT}",
-          "  hint <n>      - Get a hint for challenge n",
-          "  clear         - Clear terminal",
-          "  CONSOLEEGG    - easter egg to submit",
+          `🎯 Challenge ${challenge.id}: ${challenge.title}`,
+          "",
+          `Description: ${challenge.description}`,
+          "",
+          challenge.completed ? "✅ Status: SOLVED" : "🔓 Status: UNSOLVED",
           ""
         ]);
-        break;
+      } else {
+        addOutput("❌ Invalid challenge number. Use 1-5.");
+      }
+      break;
 
-      case 'challenges':
+    case 'submit':
+      if (!arg) {
+        addOutput("❌ Please provide an egg to submit.");
+        break;
+      }
+      
+      const flag = arg.toUpperCase();
+      const matchingChallenge = challenges.find(c => c.flag === flag && !c.completed);
+      
+      if (matchingChallenge) {
+        setChallenges(prev => prev.map(c => 
+          c.id === matchingChallenge.id ? { ...c, completed: true } : c
+        ));
         addOutput([
           "",
-          "🎯 CTF Challenges:",
+          "🎉 CORRECT! Egg accepted! 🎉",
+          `✅ Challenge ${matchingChallenge.id} solved: ${matchingChallenge.title}`,
+          `🏆 Progress: ${flagsFound + 1}/${TOTAL_FLAGS} eggs found`,
           ""
         ]);
-        challenges.forEach(challenge => {
-          const status = challenge.completed ? "✅ SOLVED" : "🔓 UNSOLVED";
-          addOutput(`${challenge.id}. ${challenge.title} - ${status}`);
-        });
-        addOutput("");
-        break;
-
-      case 'challenge':
-        const challengeNum = parseInt(arg);
-        if (challengeNum >= 1 && challengeNum <= 5) {
-          const challenge = challenges[challengeNum - 1];
-          setCurrentChallenge(challengeNum);
-          addOutput([
-            "",
-            `🎯 Challenge ${challenge.id}: ${challenge.title}`,
-            "",
-            `Description: ${challenge.description}`,
-            "",
-            challenge.completed ? "✅ Status: SOLVED" : "🔓 Status: UNSOLVED",
-            ""
-          ]);
-        } else {
-          addOutput("❌ Invalid challenge number. Use 1-5.");
-        }
-        break;
-
-      case 'submit':
-        if (!arg) {
-          addOutput("❌ Please provide an egg to submit.");
-          break;
-        }
-        
-        
-        const flag = arg.toUpperCase();
-        const matchingChallenge = challenges.find(c => c.flag === flag && !c.completed);
-        
-        
-        if (matchingChallenge) {
-          setChallenges(prev => prev.map(c => 
-            c.id === matchingChallenge.id ? { ...c, completed: true } : c
-          ));
-          addOutput([
-            "",
-            "🎉 CORRECT! Egg accepted! 🎉",
-            `✅ Challenge ${matchingChallenge.id} solved: ${matchingChallenge.title}`,
-            `🏆 Progress: ${flagsFound + 1}/${TOTAL_FLAGS} eggs found`,
-            ""
-          ]);
-        } else {
-          addOutput([
-            "",
-            "❌ Incorrect egg or already submitted.",
-            "💡 Tip: Eggs are in format submit {EGG_TEXT}",
-            ""
-          ]);
-        }
-        break;
-
-      case 'hint':
-        const hintNum = parseInt(arg);
-        if (hintNum >= 1 && hintNum <= 5) {
-          const challenge = challenges[hintNum - 1];
-          if (challenge.completed) {
-            addOutput(`💡 Challenge ${hintNum} is already solved!`);
-          } else {
-            const randomHint = challenge.hints[Math.floor(Math.random() * challenge.hints.length)];
-            addOutput([
-              "",
-              `💡 Hint for Challenge ${hintNum}:`,
-              randomHint,
-              ""
-            ]);
-          }
-        } else {
-          addOutput("❌ Invalid challenge number. Use 1-5.");
-        }
-        break;
-
-      case 'clear':
-        setTerminalOutput([]);
-        break;
-
-      case 'ls':
+      } else {
         addOutput([
           "",
-          "📁 Directory contents:",
-          "challenges.txt    flags/    README.md",
+          "❌ Incorrect egg or already submitted.",
+          "💡 Tip: Eggs are in format submit {EGG_TEXT}",
           ""
         ]);
-        break;
+      }
+      break;
 
-      case 'whoami':
-        addOutput("reika - CTF participant");
-        break;
+    case 'hint':
+      const hintNum = parseInt(arg);
+      if (hintNum >= 1 && hintNum <= 5) {
+        const challenge = challenges[hintNum - 1];
+        if (challenge.completed) {
+          addOutput(`💡 Challenge ${hintNum} is already solved!`);
+        } else {
+          const randomHint = challenge.hints[Math.floor(Math.random() * challenge.hints.length)];
+          addOutput([
+            "",
+            `💡 Hint for Challenge ${hintNum}:`,
+            randomHint,
+            ""
+          ]);
+        }
+      } else {
+        addOutput("❌ Invalid challenge number. Use 1-5.");
+      }
+      break;
 
-      case 'pwd':
-        addOutput("/home/reika/ctf");
-        break;
+    case 'clear':
+      setTerminalOutput([]);
+      break;
 
-      default:
-        addOutput([
-          `❌ Command not found: ${cmd}`,
-          "💡 Type 'help' for available commands.",
-          ""
-        ]);
-        break;
-    }
-  }, [challenges, flagsFound, addOutput]);
+    case 'ls':
+      addOutput([
+        "",
+        "📁 Directory contents:",
+        "challenges.txt    flags/    README.md",
+        ""
+      ]);
+      break;
 
-  const startGame = () => {
+    case 'whoami':
+      addOutput("reika - CTF participant");
+      break;
+
+    case 'pwd':
+      addOutput("/home/reika/ctf");
+      break;
+
+    default:
+      addOutput([
+        `❌ Command not found: ${cmd}`,
+        "💡 Type 'help' for available commands.",
+        ""
+      ]);
+      break;
+  }
+}, [challenges, flagsFound, addOutput, setChallenges, setCurrentChallenge, setTerminalOutput]);
+
+  function startGame() {
     setGameStarted(true);
     setGameOver(false);
-  };
+  }
 
   const restartGame = () => {
     setTimeLeft(GAME_DURATION);
