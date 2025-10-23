@@ -54,7 +54,7 @@ export function Terminal({ onCommand, output, isGameActive }: TerminalProps) {
   };
 
   return (
-    <div className="bg-black text-yellow-400 font-mono text-sm rounded-lg overflow-hidden shadow-2xl border-2 border-green-500/30">
+    <div className="bg-black text-green-400 font-mono text-sm rounded-lg overflow-hidden shadow-2xl border-2 border-green-500/30">
       <div className="bg-gray-800 px-4 py-2 flex items-center justify-between border-b border-green-500/30">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -69,7 +69,7 @@ export function Terminal({ onCommand, output, isGameActive }: TerminalProps) {
   className="h-96 overflow-y-auto p-4 space-y-1"
   style={{
     '--color-cyan': '#22d3ee',
-    '--color-yellow': '#fde047',
+    '--color-yellow': '#4ade80',
     '--color-gray': '#9ca3af'
   } as React.CSSProperties}
 >
