@@ -18,10 +18,15 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-gradient-to-r from-black to-red-900 rounded-lg p-8 max-w-md w-full mx-4 text-center shadow-2xl">
-        <div className="text-6xl mb-4">
-          {isWin ? '🎉' : '⏰'}
+        <div className="flex justify-center items-center mb-4 h-20">
+        {isWin ? (
+        <img 
+        src='/AWSCCPCUFoundationDay/reikaAWSegg.png' width="130" alt="Egg" className="object-contain"/>
+        ) : (
+        <span className="text-7xl">⏰</span>
+        )}
         </div>
-        
+
         <h2 className="text-white text-3xl mb-4">
           {isWin ? 'Congratulations!' : 'Time\'s Up!'}
         </h2>
@@ -31,7 +36,7 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
             You collected <span className="text-orange-500">{eggsCollected}</span> out of <span className="text-orange-500">{totalEggs}</span> eggs!
           </p>
           {isWin && (
-            <p className="text-green-600">
+            <p className="text-green-600 text-lg">
               🏆 Perfect! You found all eggs with {formatTime(timeLeft)} remaining!
             </p>
           )}
@@ -40,9 +45,15 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
         <div className="mb-6">
           <div className="flex justify-center space-x-2 mb-4">
             {Array.from({ length: totalEggs }, (_, i) => (
-              <span key={i} className="text-3xl">
-                {i < eggsCollected ? <img src='/AWSCCPCUFoundationDay/reikaGold_egg.png' alt={`Egg ${i + 1}`} /> : '⭕'}
-              </span>
+              <span key={i} className="inline-flex items-center justify-center w-[80px] h-[80px]">
+                 {i < eggsCollected ? (
+                  <img src='/AWSCCPCUFoundationDay/reikaGold_egg.png' width="80" alt={`Egg ${i + 1}`}
+                  className="object-contain"
+                  />
+               ) : (
+        <span className="text-4xl leading-none">⭕</span>
+        )}
+        </span>
             ))}
           </div>
         </div>
