@@ -186,16 +186,16 @@ useEffect(() => {
           ""
         ]);
       } else {
-        addOutput("❌ Invalid challenge number. Use 1-5.");
-      }
-      break;
+        addOutput(['<span style="color: #ff0000ff">❌ Invalid challenge number, use 1-5.</span>']);
+      }
+      break;
 
     case 'submit':
       if (!arg) {
-        addOutput("❌ Please provide an egg to submit.");
+        addOutput(['<span style= "color: #ff0000ff">❌ Please provide an egg to submit.</span>']);
         break;
       }
-      
+
       const flag = arg.toUpperCase();
       const matchingChallenge = challenges.find(c => c.flag === flag && !c.completed);
       
