@@ -23,7 +23,8 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
         <img 
         src='/AWSCCPCUFoundationDay/reikaAWSegg.png' width="130" alt="Egg" className="object-contain"/>
         ) : (
-        <span className="text-7xl">⏰</span>
+         <img 
+        src='/AWSCCPCUFoundationDay/reikaPleading.png' width="130" alt="Egg" className="object-contain"/>
         )}
         </div>
 
@@ -51,7 +52,9 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
                   className="object-contain"
                   />
                ) : (
-        <span className="text-4xl leading-none">⭕</span>
+        <img src='/AWSCCPCUFoundationDay/reikaUnknown_egg.png' width="80" alt={`Egg ${i + 1}`}
+                  className="object-contain"
+                  />
         )}
         </span>
             ))}
