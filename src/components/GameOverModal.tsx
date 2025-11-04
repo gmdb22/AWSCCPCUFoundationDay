@@ -21,10 +21,10 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
         <div className="flex justify-center items-center mb-4 h-20">
         {isWin ? (
         <img 
-        src='/AWSCCPCUFoundationDay/reikaAWSegg.png' width="130" alt="Egg" className="object-contain"/>
+        src='/reikaAWSegg.png' width="130" alt="Egg" className="object-contain"/>
         ) : (
          <img 
-        src='/AWSCCPCUFoundationDay/reikaPleading.png' width="130" alt="Egg" className="object-contain"/>
+        src='/reikaPleading.png' width="130" alt="Egg" className="object-contain"/>
         )}
         </div>
 
@@ -48,11 +48,11 @@ export function GameOverModal({ isWin, eggsCollected, totalEggs, timeLeft, onRes
             {Array.from({ length: totalEggs }, (_, i) => (
               <span key={i} className="inline-flex items-center justify-center w-[80px] h-[80px]">
                  {i < eggsCollected ? (
-                  <img src='/AWSCCPCUFoundationDay/reikaGold_egg.png' width="80" alt={`Egg ${i + 1}`}
+                  <img src='/reikaGold_egg.png' width="80" alt={`Egg ${i + 1}`}
                   className="object-contain"
                   />
                ) : (
-        <img src='/AWSCCPCUFoundationDay/reikaUnknown_egg.png' width="80" alt={`Egg ${i + 1}`}
+        <img src='/reikaUnknown_egg.png' width="80" alt={`Egg ${i + 1}`}
                   className="object-contain"
                   />
         )}
