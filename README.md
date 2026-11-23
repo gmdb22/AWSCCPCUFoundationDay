@@ -29,4 +29,4 @@ Play the CTF game live at: [https://reikaegghunt.vercel.app/](https://reikaegghu
 
 
 ## Contact
-For questions or collaborations, reach out to AWSCCPCU Technology Office or the listed developers.
+For questions or collaborations, reach out to AWSSBG PCU Technology Office or the listed developers.
